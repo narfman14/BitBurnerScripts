@@ -1,5 +1,5 @@
 # BitBurnerScripts
-My BitBurner Scripts
+
 I'm a beginner so these are probably horrible but get the job done for me. 
 I'm not including anything I didn't put together myself which is why I have very few scripts. 
 I'm studying from other people, learning and building as I go.
