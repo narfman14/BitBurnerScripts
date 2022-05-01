@@ -4,28 +4,25 @@ export async function main(ns) {
 	const crime = "Homicide";
 
 	ns.disableLog("sleep");
+	ns.disableLog("singularity.joinFaction")
 	ns.tail();
 
 	while (!ns.gang.inGang()) {
-		let factionList = ns.checkFactionInvitations();
+		//let factionList = ns.singularity.checkFactionInvitations();
 		let karma = ns.heart.break();
 		ns.print("Current Karma : " + karma);
 		if (karma > -55000) {
-			ns.commitCrime(crime);
-			await ns.sleep(3000);
-			for (let faction of factionList) {
-				if (faction == gangName) {
-					ns.joinFaction(faction);
-					ns.toast("Joined Slum Snakes", "success", 3000)
-				}
-				else {
-					ns.print("Slum Snakes is not available")
-				}
+			let joinGang = ns.singularity.joinFaction(gangName);
+			ns.singularity.commitCrime(crime);
+			if (joinGang) {
+				ns.toast("Joined Slum Snakes", "success", 5000)
+				await ns.sleep(100)
 			}
+			await ns.sleep(3000);
 		}
 		else if ((ns.getServerMaxRam("home") - ns.getServerUsedRam("home")) >= 32) {
 			ns.gang.createGang(gangName);
-			ns.toast("Created Gang", "success", 3000)
+			ns.toast("Created Gang", "success", 5000)
 			ns.exec("gang-CK.js", "home");
 			await ns.sleep(100);
 		}
