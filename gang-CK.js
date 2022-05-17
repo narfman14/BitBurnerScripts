@@ -8,7 +8,7 @@ export async function main(ns) {
 		"DataJack", "Graphene Bone Lacings"]
 
 	const otherGangNames = ["Tetrads", "The Syndicate", "The Dark Army", "Speakers for the Dead", "NiteSec", "The Black Hand"]
-	var datetime = " " + new Date().today() + " @ " + new Date().timeNow();
+
 	ns.tail();
 	ns.disableLog("ALL");
 	while (true) {
@@ -51,7 +51,7 @@ export async function main(ns) {
 						//ns.print("Purchased Augs, Cost left " + augCostLeft);
 					}
 					//buy weapons after you bought all Augs
-					if(augCostLeft < 1) {
+					if (augCostLeft < 1) {
 						if (ns.getServerMoneyAvailable("home") >= homeMoney) {
 							buyWeapons();
 						}
@@ -215,6 +215,7 @@ export async function main(ns) {
 	function buyWeapons() {
 		for (let gangMember of ns.gang.getMemberNames()) {
 			for (let weapon of gangEquip) {
+				let datetime = " " + new Date().today() + " @ " + new Date().timeNow();
 				let equipCost = ns.gang.getEquipmentCost(weapon);
 				let buyWeapons = ns.gang.purchaseEquipment(gangMember, weapon);
 				if (buyWeapons) {
@@ -226,6 +227,7 @@ export async function main(ns) {
 	function buyAugs() {
 		for (let gangMember of ns.gang.getMemberNames()) {
 			for (let aug of gangAugs) {
+				let datetime = " " + new Date().today() + " @ " + new Date().timeNow();
 				let equipCost = ns.gang.getEquipmentCost(aug);
 				let buyWeapons = ns.gang.purchaseEquipment(gangMember, aug);
 				if (buyWeapons) {
